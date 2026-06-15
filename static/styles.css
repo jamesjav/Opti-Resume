@@ -1,92 +1,181 @@
-/* Apply background image to the whole app */
+/* ===== Global ===== */
 .stApp {
-    background-image: url("https://wallpapers.com/images/high/professional-background-4b31fgiuezafrguu.webp");  /* Change the URL as needed */
-    background-size: cover;
-    background-position: center;
-    height: 100%;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    background-attachment: fixed;
+    color: #e0e0e0;
 }
 
-/* Sidebar Styling */
+/* ===== Sidebar ===== */
 section[data-testid="stSidebar"] {
-    background-image: url("https://wallpapers.com/images/high/professional-background-4b31fgiuezafrguu.webp");
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    border-right: 2px solid #ddd;
+    background: rgba(15, 12, 41, 0.92);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255,255,255,0.08);
 }
 
-/* Sidebar Title */
-section[data-testid="stSidebar"] .css-1v0mbdj {
-    color: white !important;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
+section[data-testid="stSidebar"] .stRadio > div {
+    gap: 2px;
 }
 
-/* Sidebar Widgets */
-section[data-testid="stSidebar"] .stSelectbox, 
-section[data-testid="stSidebar"] .stButton, 
-section[data-testid="stSidebar"] .stTextInput {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    color: white;
+section[data-testid="stSidebar"] label {
+    color: #c0c0c0 !important;
+    font-size: 13px;
 }
 
-/* Style for text areas */
+/* ===== Cards / Containers ===== */
+.stTextArea > div > div {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: #e0e0e0;
+}
+
 .stTextArea textarea {
-    border: 2px solid #4CAF50;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif;
+    color: #e0e0e0 !important;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
-/* Style for buttons */
-.stButton button {
-    background-color: #4CAF50;
+/* ===== Buttons ===== */
+.stButton > button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 8px 16px;
-    transition: 0.3s;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-.stButton button:hover {
-    background-color: #45a049;
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
-/* Titles and text styling */
+.stButton > button:active {
+    transform: translateY(0);
+}
+
+/* Primary button */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Download button */
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: #1a1a2e;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    box-shadow: 0 4px 15px rgba(56, 239, 125, 0.3);
+}
+
+/* ===== File Uploader ===== */
+.stFileUploader > div {
+    background: rgba(255,255,255,0.05);
+    border: 2px dashed rgba(102, 126, 234, 0.5);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* ===== Titles ===== */
 h1, .stTitle {
-    color: #333;
-    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
     text-align: center;
+    font-weight: 600;
 }
 
-.stMarkdown {
-    font-family: 'Arial', sans-serif;
+h2, .stHeader {
+    color: #c8c8ff;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Custom page title styling */
-.page-title {
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
-    padding: 20px 0;
-    text-align: center;
+h3 {
+    color: #a0a0e0;
 }
 
-/* Scrollbar Customization */
+/* ===== Success / Error / Warning ===== */
+.stSuccess {
+    background: rgba(25, 135, 84, 0.15);
+    border: 1px solid rgba(25, 135, 84, 0.4);
+    border-radius: 8px;
+    color: #75d9a0;
+}
+
+.stError {
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.4);
+    border-radius: 8px;
+    color: #ff7b7b;
+}
+
+.stWarning {
+    background: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    border-radius: 8px;
+    color: #ffe066;
+}
+
+/* ===== Selectbox / Radio ===== */
+.stSelectbox > div > div {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    color: #e0e0e0;
+}
+
+/* ===== Slider ===== */
+.stSlider > div > div > div {
+    background: rgba(102, 126, 234, 0.3);
+}
+
+/* ===== Expander ===== */
+.streamlit-expanderHeader {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    color: #c0c0c0;
+}
+
+/* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: rgba(255,255,255,0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #4CAF50;
+    background: rgba(102, 126, 234, 0.5);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #45a049;
+    background: rgba(102, 126, 234, 0.8);
+}
+
+/* ===== Spinner ===== */
+.stSpinner > div {
+    border-color: #667eea transparent transparent transparent;
+}
+
+/* ===== Markdown Content ===== */
+.stMarkdown {
+    color: #d0d0d0;
+    line-height: 1.7;
+}
+
+.stMarkdown strong {
+    color: #e0e0ff;
+}
+
+.stMarkdown code {
+    background: rgba(255,255,255,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
 }
