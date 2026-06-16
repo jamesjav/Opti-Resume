@@ -1,109 +1,114 @@
-# Opti-Resume: AI-Powered Resume Optimization Toolkit
+# Opti-Resume 🚀 AI 智能简历优化工具
 
-An intelligent, open-source resume optimization tool powered by LLMs. Upload your resume, paste a job description, and get actionable AI-driven suggestions to make your resume stand out.
+一款基于大语言模型的开源简历优化工具。上传简历、粘贴职位描述，即可获得 AI 驱动的专业优化建议，让你的简历脱颖而出。
 
-## What's New (Improved Version)
+---
 
-This fork includes significant enhancements over the original:
+## ✨ 核心功能
 
-- **Multi-LLM Support**: Switch between OpenAI, DeepSeek, and local Ollama models
-- **Chinese Resume Support**: Full Chinese prompt templates for resume optimization, ATS analysis, and more
-- **Cover Letter Generator**: New tool to auto-generate tailored cover letters
-- **Improved UI**: Modern dark-themed interface with smooth gradients and animations
-- **Better PDF Output**: Unicode/Chinese character support via reportlab (with automatic fallback)
-- **Error Handling**: Graceful error messages instead of crashes
-- **Configurable Parameters**: Adjustable max tokens and temperature in sidebar
+| 工具 | 说明 |
+|------|------|
+| 📝 简历优化 | 用强动词、量化成果和 ATS 友好关键词重写简历 |
+| 🎯 ATS 评分分析 | 对照职位描述打分，找出缺失关键词和改进方向 |
+| 💡 要点分析 | 将薄弱的要点描述转化为有冲击力的量化成果（XYZ 公式） |
+| 🔑 技能关键词提取 | 从职位描述中提取并分类技术技能 |
+| 📊 量化指标建议 | 为任意要点描述生成 5 个可量化的指标 |
+| ✉️ 求职信生成器 | 根据简历 + 职位描述自动生成个性化求职信 |
 
-## Features
+---
 
-| Tool | Description |
-|------|-------------|
-| Resume Optimization | Rewrite your resume with strong action verbs, quantified achievements, and ATS-friendly keywords |
-| ATS Score Analysis | Score your resume against a job description and get missing keywords + improvement suggestions |
-| Bullet-Point Analysis | Transform weak bullet points into impactful, quantified achievements using the XYZ formula |
-| Skills Analysis | Extract and categorize technical skills from any job description |
-| Metric Suggestions | Get 5 quantifiable metrics for any bullet point you describe |
-| Cover Letter Generator | Auto-generate a personalized cover letter from your resume + job description |
+## 🆕 主要特性
 
-## Quick Start
+- **多 LLM 后端支持** — 一键切换 OpenAI / DeepSeek / Ollama 本地模型
+- **中文简历全支持** — 所有工具均有中文 Prompt 模板，sidebar 语言切换
+- **求职信生成器** — 新增工具，自动生成针对性求职信
+- **现代深色 UI** — 渐变主题风格，流畅的交互体验
+- **PDF 中文导出** — 基于 reportlab，完美支持中文/Unicode，自动降级兼容
+- **完善的错误处理** — 友好提示，告别直接崩溃
+- **参数可配置** — sidebar 可调 max_tokens / temperature
 
-### 1. Clone and Install
+---
+
+## 🚀 快速开始
+
+### 1. 克隆并安装
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Opti-Resume.git
+git clone https://github.com/jamesjav/Opti-Resume.git
 cd Opti-Resume
 pip install -r requirements.txt
 ```
 
-### 2. Configure API Keys
+### 2. 配置 API 密钥
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` with at least one LLM provider's API key:
+编辑 `.env`，至少配置一个 LLM 服务商的密钥：
 
 ```env
-# Option A: OpenAI
+# 方案 A：OpenAI
 OPENAI_API_KEY=sk-your-key-here
 
-# Option B: DeepSeek (cheaper alternative)
+# 方案 B：DeepSeek（性价比之选）
 DEEPSEEK_API_KEY=sk-your-key-here
 
-# Option C: Ollama (free, local)
+# 方案 C：Ollama（免费本地部署）
 OLLAMA_BASE_URL=http://localhost:11434/v1
 ```
 
-### 3. Run
+### 3. 启动
 
 ```bash
 streamlit run app.py
 ```
 
-## Supported LLM Providers
+---
 
-| Provider | Cost | Quality | Setup |
-|----------|------|---------|-------|
-| **OpenAI** (GPT-4o) | $$$ | Best | API key required |
-| **DeepSeek** | $ | Good | API key required |
-| **Ollama** (local) | Free | Varies | Install [Ollama](https://ollama.ai) + pull a model |
+## 🤖 支持的 LLM 服务商
 
-The app auto-detects which providers are configured and shows only available options.
+| 服务商 | 费用 | 质量 | 配置方式 |
+|--------|------|------|----------|
+| **OpenAI**（GPT-4o） | $$$ | 最佳 | 需要 API Key |
+| **DeepSeek** | $ | 良好 | 需要 API Key |
+| **Ollama**（本地） | 免费 | 取决于模型 | 安装 [Ollama](https://ollama.ai) + 拉取模型 |
 
-## Project Structure
+应用会自动检测已配置的服务商，仅显示可用选项。
+
+---
+
+## 📁 项目结构
 
 ```
 Opti-Resume/
-├── app.py                    # Streamlit entry point
+├── app.py                          # Streamlit 入口
 ├── OptiResume/
-│   ├── main.py               # Page logic for each tool
-│   ├── utils.py              # PDF extraction & generation
-│   └── llm.py                # Multi-provider LLM client
+│   ├── main.py                     # 各工具页面逻辑
+│   ├── utils.py                    # PDF 提取与生成
+│   └── llm.py                      # 多 LLM 客户端
 ├── Prompts/
-│   ├── Optimisation-Prompt.txt
-│   ├── Optimisation-Prompt-CN.txt   # Chinese version
-│   ├── ATS_Check.txt
-│   ├── ATS_Check-CN.txt
-│   ├── Bullet_Prompt.txt
-│   ├── Bullet_Prompt-CN.txt
-│   ├── Keyword_Prompt.txt
-│   ├── Keyword_Prompt-CN.txt
-│   ├── Metric_Prompt.txt
-│   ├── Metric_Prompt-CN.txt
-│   ├── CoverLetter_Prompt.txt       # New!
-│   └── CoverLetter_Prompt-CN.txt    # New!
+│   ├── Optimisation-Prompt.txt     # 简历优化（英文）
+│   ├── Optimisation-Prompt-CN.txt  # 简历优化（中文）
+│   ├── ATS_Check.txt               # ATS 分析（英文）
+│   ├── ATS_Check-CN.txt            # ATS 分析（中文）
+│   ├── Bullet_Prompt.txt           # 要点分析（英文）
+│   ├── Bullet_Prompt-CN.txt        # 要点分析（中文）
+│   ├── Keyword_Prompt.txt          # 关键词提取（英文）
+│   ├── Keyword_Prompt-CN.txt       # 关键词提取（中文）
+│   ├── Metric_Prompt.txt           # 量化指标（英文）
+│   ├── Metric_Prompt-CN.txt        # 量化指标（中文）
+│   ├── CoverLetter_Prompt.txt      # 求职信（英文）
+│   └── CoverLetter_Prompt-CN.txt   # 求职信（中文）
 ├── static/
-│   └── styles.css
+│   └── styles.css                  # 深色主题样式
 ├── requirements.txt
 ├── .env.example
 └── README.md
 ```
 
-## License
+---
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📄 开源协议
 
-## Acknowledgments
-
-- Original project by [KalyanM45](https://github.com/KalyanM45/Opti-Resume)
-- Improved with multi-LLM support, Chinese language support, and UI enhancements
+本项目基于 MIT 协议开源，详见 [LICENSE](LICENSE)。
